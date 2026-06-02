@@ -18,15 +18,33 @@ public class EmployeeRepository : IEmployeeRepository
         return await _context.Employees.FirstOrDefaultAsync(e => e.Email == email);
     }
 
-    public async Task<EmployeeEntity?> FindAsync(Guid id) => 
-        await _context.Employees.Include(
-            p => p.ManagedProjects).
-            Include(t => t.AuthoredTasks).
-            Include(t => t.WorkedTasks).
-            FirstOrDefaultAsync(x => x.Id == id);
+    public async Task<EmployeeEntity?> FindAsync(Guid id) =>
+        await _context.Employees
+            .Include(p => p.ManagedProjects)
+            .Include(t => t.AuthoredTasks)
+            .Include(t => t.WorkedTasks)
+            .FirstOrDefaultAsync(x => x.Id == id);
 
-    public async Task<IEnumerable<EmployeeEntity>> GetAllAsync() => 
-        await _context.Employees.ToListAsync();
+    public async Task<IEnumerable<EmployeeEntity>> GetAllAsync(string? search = null)
+    {
+        var query = _context.Employees.AsNoTracking().AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            var normalizedSearch = search.Trim().ToLower();
+            query = query.Where(employee =>
+                (employee.Name ?? string.Empty).ToLower().Contains(normalizedSearch) ||
+                (employee.SecondName ?? string.Empty).ToLower().Contains(normalizedSearch) ||
+                (employee.ThirdName ?? string.Empty).ToLower().Contains(normalizedSearch) ||
+                (employee.Email ?? string.Empty).ToLower().Contains(normalizedSearch));
+        }
+
+        return await query
+            .OrderBy(employee => employee.SecondName)
+            .ThenBy(employee => employee.Name)
+            .Take(25)
+            .ToListAsync();
+    }
 
     public async Task PersistAsync(EmployeeEntity entity)
     {

@@ -36,9 +36,9 @@ public class EmployeeService : IEmployeeService
             );
     }
 
-    public async Task<IEnumerable<EmployeeToResponse>> GetAll()
+    public async Task<IEnumerable<EmployeeToResponse>> GetAll(string? search = null)
     {
-        var entities = await _repository.GetAllAsync();
+        var entities = await _repository.GetAllAsync(search);
         return entities.Select(e 
             => new EmployeeToResponse(
                 e.Id, e.Name, e.SecondName, e.ThirdName, e.Email,

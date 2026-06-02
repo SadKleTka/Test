@@ -11,6 +11,7 @@ public interface IProjectService
     public Task<IEnumerable<ProjectToResponse>> GetAll();
     
     public Task<Message> CreateProject(ProjectToCreate project);
+    public Task<ProjectToResponse> CreateProjectAndReturn(ProjectToCreate project);
     
     public Task<Message> UpdateProject(Guid id, ProjectToUpdate project);
     

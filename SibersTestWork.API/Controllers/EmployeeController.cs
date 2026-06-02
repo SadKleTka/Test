@@ -27,11 +27,11 @@ public class EmployeeController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll([FromQuery] string? search = null)
     {
-        _logger.LogInformation("Employee GetAll method called.");
+        _logger.LogInformation("Employee GetAll method called. Search: {Search}", search);
 
-        return Ok(await _service.GetAll());
+        return Ok(await _service.GetAll(search));
     }
 
     [HttpPost]

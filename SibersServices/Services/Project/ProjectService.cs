@@ -45,6 +45,18 @@ public class ProjectService : IProjectService
 
     public async Task<Message> CreateProject(ProjectToCreate project)
     {
+        await CreateProjectEntity(project);
+        return new Message("Project created successfully", DateTime.UtcNow);
+    }
+
+    public async Task<ProjectToResponse> CreateProjectAndReturn(ProjectToCreate project)
+    {
+        var entity = await CreateProjectEntity(project);
+        return ToResponse(entity);
+    }
+
+    private async Task<ProjectEntity> CreateProjectEntity(ProjectToCreate project)
+    {
         if (project.EndDate.HasValue && project.EndDate < project.StartDate)
             throw new BusinessValidationException("EndDate must be after StartDate");
 
@@ -56,9 +68,9 @@ public class ProjectService : IProjectService
             project.Priority,
             project.EndDate,
             project.ManagerId);
-        
+
         await _repository.PersistAsync(newProject);
-        return new Message("Project created successfully", DateTime.UtcNow);
+        return newProject;
     }
 
     public async Task<Message> UpdateProject(Guid id, ProjectToUpdate project)

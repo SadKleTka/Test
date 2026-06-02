@@ -1,76 +1,151 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Project Wizard</title>
-    <link rel="stylesheet" href="styles.css"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Создание проекта</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
+<main class="page-shell">
+    <section class="wizard-card" aria-labelledby="pageTitle">
+        <div class="wizard-header">
+            <div>
+                <p class="eyebrow">Project wizard</p>
+                <h1 id="pageTitle">Создание проекта</h1>
+                <p class="subtitle">Пошаговая форма: данные проекта, компании, руководитель, исполнители и документы.</p>
+            </div>
+            <div class="step-counter" id="stepCounter">Шаг 1 из 5</div>
+        </div>
 
-<div class="container">
+        <ol class="progress" id="progress" aria-label="Шаги визарда">
+            <li class="active"><span>1</span><p>Проект</p></li>
+            <li><span>2</span><p>Компании</p></li>
+            <li><span>3</span><p>Руководитель</p></li>
+            <li><span>4</span><p>Исполнители</p></li>
+            <li><span>5</span><p>Документы</p></li>
+        </ol>
 
-    <h1>Project Wizard</h1>
+        <div class="alert hidden" id="formAlert" role="alert"></div>
 
-    <div id="stepIndicator">Step 1 / 5</div>
+        <form id="projectWizard" novalidate>
+            <section class="step" id="step-1" data-step="1">
+                <div class="step-title">
+                    <h2>Основная информация</h2>
+                    <p>Заполните название, даты и приоритет проекта.</p>
+                </div>
 
-    <!-- STEP 1 -->
-    <div class="step" id="step-1">
-        <h2>Project Info</h2>
+                <label class="field">
+                    <span>Название проекта *</span>
+                    <input id="projectName" name="projectName" type="text" autocomplete="off" placeholder="Например: Внутренняя CRM" required />
+                </label>
 
-        <input id="name" placeholder="Project name"/>
-        <input type="date" id="startDate"/>
-        <input type="date" id="endDate"/>
-        <input type="number" id="priority" placeholder="Priority (1-10)" min="1" max="10"/>
+                <div class="grid two-columns">
+                    <label class="field">
+                        <span>Дата начала *</span>
+                        <input id="startDate" name="startDate" type="date" required />
+                    </label>
 
-        <button onclick="nextStep()">Next</button>
-    </div>
+                    <label class="field">
+                        <span>Дата окончания</span>
+                        <input id="endDate" name="endDate" type="date" />
+                    </label>
+                </div>
 
-    <!-- STEP 2 -->
-    <div class="step hidden" id="step-2">
-        <h2>Companies</h2>
+                <label class="field">
+                    <span>Приоритет проекта *</span>
+                    <select id="priority" name="priority" required>
+                        <option value="">Выберите приоритет</option>
+                        <option value="1">1 — самый низкий</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 — средний</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10 — самый высокий</option>
+                    </select>
+                </label>
+            </section>
 
-        <input id="customerCompany" placeholder="Customer company"/>
-        <input id="workerCompany" placeholder="Worker company"/>
+            <section class="step hidden" id="step-2" data-step="2">
+                <div class="step-title">
+                    <h2>Компании</h2>
+                    <p>Укажите заказчика и исполнителя проекта.</p>
+                </div>
 
-        <button onclick="prevStep()">Back</button>
-        <button onclick="nextStep()">Next</button>
-    </div>
+                <label class="field">
+                    <span>Компания-заказчик *</span>
+                    <input id="customerCompany" name="customerCompany" type="text" autocomplete="organization" placeholder="Название компании-заказчика" required />
+                </label>
 
-    <!-- STEP 3 -->
-    <div class="step hidden" id="step-3">
-        <h2>Manager</h2>
+                <label class="field">
+                    <span>Компания-исполнитель *</span>
+                    <input id="workerCompany" name="workerCompany" type="text" autocomplete="organization" placeholder="Название компании-исполнителя" required />
+                </label>
+            </section>
 
-        <select id="managerSelect"></select>
+            <section class="step hidden" id="step-3" data-step="3">
+                <div class="step-title">
+                    <h2>Руководитель проекта</h2>
+                    <p>Начните вводить имя, фамилию или email — список сотрудников будет найден через AJAX-запрос.</p>
+                </div>
 
-        <button onclick="prevStep()">Back</button>
-        <button onclick="nextStep()">Next</button>
-    </div>
+                <div class="field combo-field">
+                    <span>Руководитель *</span>
+                    <div class="combo" data-combo="manager">
+                        <input id="managerSearch" type="text" autocomplete="off" placeholder="Поиск сотрудника" aria-expanded="false" aria-controls="managerDropdown" />
+                        <input id="managerId" type="hidden" />
+                        <div class="dropdown hidden" id="managerDropdown" role="listbox"></div>
+                    </div>
+                    <div class="selected-box empty" id="managerSelected">Руководитель не выбран</div>
+                </div>
+            </section>
 
-    <!-- STEP 4 -->
-    <div class="step hidden" id="step-4">
-        <h2>Employees</h2>
+            <section class="step hidden" id="step-4" data-step="4">
+                <div class="step-title">
+                    <h2>Исполнители проекта</h2>
+                    <p>Исполнители выбираются из того же списка сотрудников с серверным поиском при частичном вводе.</p>
+                </div>
 
-        <div id="employeesList"></div>
+                <div class="field combo-field">
+                    <span>Добавить исполнителя *</span>
+                    <div class="combo" data-combo="executors">
+                        <input id="executorSearch" type="text" autocomplete="off" placeholder="Введите имя, фамилию или email" aria-expanded="false" aria-controls="executorDropdown" />
+                        <div class="dropdown hidden" id="executorDropdown" role="listbox"></div>
+                    </div>
+                </div>
 
-        <button onclick="prevStep()">Back</button>
-        <button onclick="nextStep()">Next</button>
-    </div>
+                <div class="chips" id="selectedExecutors" aria-live="polite"></div>
+            </section>
 
-    <!-- STEP 5 -->
-    <div class="step hidden" id="step-5">
-        <h2>Finish</h2>
+            <section class="step hidden" id="step-5" data-step="5">
+                <div class="step-title">
+                    <h2>Документы проекта</h2>
+                    <p>Добавьте один или несколько файлов. Они будут отправлены после создания проекта.</p>
+                </div>
 
-        <input type="file" multiple/>
+                <label class="upload-zone" for="documents">
+                    <input id="documents" name="documents" type="file" multiple />
+                    <span class="upload-icon">⇧</span>
+                    <strong>Выберите документы</strong>
+                    <small>Можно загрузить несколько файлов сразу</small>
+                </label>
 
-        <button onclick="prevStep()">Back</button>
-        <button onclick="submit()">Create Project</button>
-    </div>
+                <ul class="file-list" id="fileList"></ul>
+            </section>
 
-</div>
+            <div class="actions">
+                <button class="btn secondary" id="prevButton" type="button">Назад</button>
+                <button class="btn primary" id="nextButton" type="button">Далее</button>
+                <button class="btn success hidden" id="submitButton" type="submit">Создать проект</button>
+            </div>
+        </form>
+    </section>
+</main>
 
 <script src="app.js"></script>
-
 </body>
 </html>
