@@ -1,69 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Management System</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Project Wizard</title>
+    <link rel="stylesheet" href="styles.css"/>
 </head>
+
 <body>
-    <div class="container">
-        <nav class="navbar">
-            <div class="navbar-brand">Project Management System</div>
-            <div class="navbar-menu">
-                <a href="#" onclick="showProjects()">Projects</a>
-                <a href="#" onclick="showEmployees()">Employees</a>
-                <a href="#" onclick="showTasks()">Tasks</a>
-            </div>
-        </nav>
-        <main class="main-content">
-            <section id="projects-section" class="section">
-                <h1>Projects</h1>
-                <button class="btn btn-primary" onclick="openCreateProjectWizard()">Create Project</button>
-                <div id="projects-list" class="list-container"></div>
-            </section>
-            <section id="employees-section" class="section" style="display:none;">
-                <h1>Employees</h1>
-                <button class="btn btn-primary" onclick="openCreateEmployeeModal()">Add Employee</button>
-                <div id="employees-list" class="list-container"></div>
-            </section>
-            <section id="tasks-section" class="section" style="display:none;">
-                <h1>Tasks</h1>
-                <div id="tasks-list" class="list-container"></div>
-            </section>
-        </main>
+
+<div class="container">
+
+    <h1>Project Wizard</h1>
+
+    <div id="stepIndicator">Step 1 / 5</div>
+
+    <!-- STEP 1 -->
+    <div class="step" id="step-1">
+        <h2>Project Info</h2>
+
+        <input id="name" placeholder="Project name"/>
+        <input type="date" id="startDate"/>
+        <input type="date" id="endDate"/>
+        <input type="number" id="priority" placeholder="Priority (1-10)" min="1" max="10"/>
+
+        <button onclick="nextStep()">Next</button>
     </div>
-    <div id="project-wizard" class="modal" style="display:none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Create Project - Step <span id="wizard-step">1</span> of 5</h2>
-                <button class="close-btn" onclick="closeProjectWizard()">&times;</button>
-            </div>
-            <div class="modal-body">
-                <div id="step-1"><h3>Project Information</h3><div class="form-group"><label>Project Name *</label><input type="text" id="project-name" class="form-control"></div><div class="form-row"><div class="form-group"><label>Start Date *</label><input type="date" id="project-start-date" class="form-control"></div><div class="form-group"><label>End Date</label><input type="date" id="project-end-date" class="form-control"></div></div><div class="form-group"><label>Priority *</label><input type="number" id="project-priority" class="form-control" min="1" max="10"></div></div>
-                <div id="step-2" style="display:none;"><h3>Companies</h3><div class="form-group"><label>Customer Company *</label><input type="text" id="project-customer-company" class="form-control"></div><div class="form-group"><label>Worker Company *</label><input type="text" id="project-worker-company" class="form-control"></div></div>
-                <div id="step-3" style="display:none;"><h3>Project Manager</h3><div class="form-group"><label>Select Manager *</label><input type="text" id="project-manager-search" class="form-control" placeholder="Search..." onkeyup="searchEmployees('manager')"><ul id="manager-suggestions" class="suggestions-list"></ul><input type="hidden" id="project-manager-id"><div id="manager-selected"></div></div></div>
-                <div id="step-4" style="display:none;"><h3>Project Workers</h3><div class="form-group"><label>Select Workers *</label><input type="text" id="project-workers-search" class="form-control" placeholder="Search..." onkeyup="searchEmployees('worker')"><ul id="workers-suggestions" class="suggestions-list"></ul><div id="selected-workers" class="selected-items"></div></div></div>
-                <div id="step-5" style="display:none;"><h3>Upload Documents</h3><div class="file-upload-zone" id="file-upload-zone" ondrop="handleFileDrop(event)" ondragover="handleFileDragOver(event)" ondragleave="handleFileDragLeave(event)"><p>Drag files here</p><input type="file" id="project-files" class="file-input" multiple onchange="handleFileSelect(event)"></div><div id="uploaded-files"></div></div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" onclick="previousStep()">Previous</button>
-                <button class="btn btn-primary" onclick="nextStep()" id="next-btn">Next</button>
-            </div>
-        </div>
+
+    <!-- STEP 2 -->
+    <div class="step hidden" id="step-2">
+        <h2>Companies</h2>
+
+        <input id="customerCompany" placeholder="Customer company"/>
+        <input id="workerCompany" placeholder="Worker company"/>
+
+        <button onclick="prevStep()">Back</button>
+        <button onclick="nextStep()">Next</button>
     </div>
-    <div id="employee-modal" class="modal" style="display:none;">
-        <div class="modal-content">
-            <div class="modal-header"><h2>Add Employee</h2><button class="close-btn" onclick="closeEmployeeModal()">&times;</button></div>
-            <div class="modal-body">
-                <div class="form-group"><label>First Name *</label><input type="text" id="employee-name" class="form-control"></div>
-                <div class="form-group"><label>Last Name *</label><input type="text" id="employee-second-name" class="form-control"></div>
-                <div class="form-group"><label>Patronymic</label><input type="text" id="employee-third-name" class="form-control"></div>
-                <div class="form-group"><label>Email *</label><input type="email" id="employee-email" class="form-control"></div>
-            </div>
-            <div class="modal-footer"><button class="btn btn-secondary" onclick="closeEmployeeModal()">Cancel</button><button class="btn btn-primary" onclick="saveEmployee()">Save</button></div>
-        </div>
+
+    <!-- STEP 3 -->
+    <div class="step hidden" id="step-3">
+        <h2>Manager</h2>
+
+        <select id="managerSelect"></select>
+
+        <button onclick="prevStep()">Back</button>
+        <button onclick="nextStep()">Next</button>
     </div>
-    <script src="js/app.js"></script>
+
+    <!-- STEP 4 -->
+    <div class="step hidden" id="step-4">
+        <h2>Employees</h2>
+
+        <div id="employeesList"></div>
+
+        <button onclick="prevStep()">Back</button>
+        <button onclick="nextStep()">Next</button>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step hidden" id="step-5">
+        <h2>Finish</h2>
+
+        <input type="file" multiple/>
+
+        <button onclick="prevStep()">Back</button>
+        <button onclick="submit()">Create Project</button>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+
 </body>
 </html>

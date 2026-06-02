@@ -143,3 +143,9 @@
 /Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/obj/Debug/net10.0/SibersTestWork.API.sourcelink.json
+/Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/bin/Debug/net10.0/SibersTestWork.API.staticwebassets.runtime.json
+/Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/obj/Debug/net10.0/compressed/2iy8v4bol7-{0}-715ifui05w-715ifui05w.gz
+/Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/obj/Debug/net10.0/compressed/2secnn464e-{0}-3wt0qu6vlh-3wt0qu6vlh.gz
+/Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/obj/Debug/net10.0/compressed/xptxp00uch-{0}-4gy82mwitg-4gy82mwitg.gz
+/Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/obj/Debug/net10.0/compressed/imx2tbtk8t-{0}-3unqc49qrq-3unqc49qrq.gz
+/Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/obj/Debug/net10.0/compressed/w0g1v8e2nt-{0}-9rttikouga-9rttikouga.gz
