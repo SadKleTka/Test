@@ -9,12 +9,11 @@ public class EmployeeEntity
     
     public EmployeeEntity() {} 
 
-    public EmployeeEntity(string firstName, string lastName, string patronymic, string email)
+    public EmployeeEntity(string name, string secondName, string thirdName, string email)
     {
-        Id = Guid.NewGuid();
-        Name = firstName;
-        SecondName = lastName;
-        ThirdName = patronymic;
+        Name = name;
+        SecondName = secondName;
+        ThirdName = thirdName;
         Email = email;
     }    
     public Guid Id { get; set; }

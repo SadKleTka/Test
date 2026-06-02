@@ -16,6 +16,7 @@ public class EmployeeController : ControllerBase
         _logger = logger;
         _service = service;
     }
+    
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetById(Guid id)

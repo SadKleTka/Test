@@ -4,6 +4,8 @@ namespace SibersDataManager.Repository.Employee;
 
 public interface IEmployeeRepository
 {
+    
+    Task<EmployeeEntity> GetByEmailAsync(string email);
     Task<EmployeeEntity?> FindAsync(Guid id);
     
     Task<IEnumerable<EmployeeEntity>> GetAllAsync();

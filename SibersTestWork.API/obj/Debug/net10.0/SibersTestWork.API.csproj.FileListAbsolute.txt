@@ -139,3 +139,7 @@
 /Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/obj/Debug/net10.0/ref/SibersTestWork.API.dll
 /Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/bin/Debug/net10.0/SibersServices.dll
 /Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/bin/Debug/net10.0/SibersServices.pdb
+/Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/bin/Debug/net10.0/Swashbuckle.AspNetCore.Swagger.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersTestWork.API/obj/Debug/net10.0/SibersTestWork.API.sourcelink.json

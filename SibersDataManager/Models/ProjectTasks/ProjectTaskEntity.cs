@@ -11,7 +11,6 @@ public class ProjectTaskEntity
 
     public ProjectTaskEntity(string name, Guid authorId, Guid? executorId, TaskStatusEnum status, string comment, uint priority, Guid projectId)
     {
-        Id = Guid.NewGuid();
         Name = name;
         AuthorId = authorId;
         WorkerId = executorId;

@@ -1,3 +1,6 @@
+using SibersDataManager.Models.Projects.Dto;
+using SibersDataManager.Models.Tasks.Dto;
+
 namespace SibersDataManager.Models.Employees.Dto;
 
 public record EmployeeToResponse(
@@ -5,4 +8,7 @@ public record EmployeeToResponse(
     string FirstName, 
     string LastName, 
     string Patronymic, 
-    string Email);
+    string Email,
+    List<ProjectToResponse>? Projects,
+    List<ProjectTaskToResponse>? Tasks
+    );

@@ -6,7 +6,7 @@ public record ProjectTaskToResponse(
     Guid Id, 
     string Name, 
     Guid AuthorId,
-    Guid? ExecutorId, 
+    Guid? WorkerId, 
     TaskStatusEnum Status, 
     string Comment,
     uint Priority, 

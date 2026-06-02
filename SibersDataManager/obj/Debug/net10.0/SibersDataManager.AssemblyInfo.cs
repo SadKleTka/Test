@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SibersDataManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+23783d9962dd3d4963e7421bc48e2b6f3cf3600c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64837e8fa0d524757ed79a30ecf096a4ed726c69")]
 [assembly: System.Reflection.AssemblyProductAttribute("SibersDataManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SibersDataManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

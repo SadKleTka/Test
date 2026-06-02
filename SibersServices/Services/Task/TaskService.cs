@@ -46,7 +46,7 @@ public class TaskService : ITaskService
         var entity = new ProjectTaskEntity(
             dto.Name,
             dto.AuthorId,
-            dto.ExecutorId, 
+            dto.WorkerId, 
             dto.Status,
             dto.Comment, 
             dto.Priority,
@@ -62,7 +62,7 @@ public class TaskService : ITaskService
             throw new NotFoundException($"There is no Task with id {id}");
 
         entity.Name = dto.Name;
-        entity.WorkerId = dto.ExecutorId; 
+        entity.WorkerId = dto.WorkerId; 
         entity.Status = dto.Status;
         entity.Comment = dto.Comment;
         entity.Priority = dto.Priority;

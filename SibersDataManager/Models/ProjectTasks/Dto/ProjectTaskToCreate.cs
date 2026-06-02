@@ -8,7 +8,7 @@ public record ProjectTaskToCreate(
     string Name,
     [Required(ErrorMessage = "Task AuthorId is required")]
     Guid AuthorId,
-    Guid? ExecutorId, 
+    Guid? WorkerId, 
     [Required(ErrorMessage = "Task status is required")]
     TaskStatusEnum Status, 
     [Required(ErrorMessage = "Task comment is required")]

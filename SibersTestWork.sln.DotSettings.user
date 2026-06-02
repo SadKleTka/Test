@@ -6,5 +6,8 @@
     &lt;TestId&gt;MSTest::39EFC88F-5DD5-43E1-9897-90F7FF0BC03B::net10.0::ProjectTests.EmployeeTest.UpdateEmployee_UpdateSuccess_ReturnSuccessMessage&lt;/TestId&gt;
     &lt;TestId&gt;MSTest::39EFC88F-5DD5-43E1-9897-90F7FF0BC03B::net10.0::ProjectTests.EmployeeTest.UpdateEmployee_EntityIsNull_ThrowsNotFoundException&lt;/TestId&gt;
     &lt;TestId&gt;MSTest::39EFC88F-5DD5-43E1-9897-90F7FF0BC03B::net10.0::ProjectTests.TaskTest&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::39EFC88F-5DD5-43E1-9897-90F7FF0BC03B::net10.0::ProjectTests.EmployeeTest&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::39EFC88F-5DD5-43E1-9897-90F7FF0BC03B::net10.0::ProjectTests.ProjectEmployeeTest.LinkProjectEmployee_ProjectAlreadyHasEmployee_ThrowsBusinessValidationException&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::39EFC88F-5DD5-43E1-9897-90F7FF0BC03B::net10.0::ProjectTests.ProjectEmployeeTest.LinkProjectEmployee_LinkSuccess_ReturnsApproveMessage&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
