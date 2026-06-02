@@ -42,7 +42,7 @@ public class EmployeeController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Update(Guid id, [FromBody] EmployeeToUpdate dto)
+    public async Task<IActionResult> Update(Guid id, [FromBody] EmployeeToCreate dto)
     {
         _logger.LogInformation("Employee Update method called.");
 

@@ -21,31 +21,41 @@ public class EmployeeService : IEmployeeService
         if (entity is null)
             throw new NotFoundException($"There is no Employee with id {id}");
 
-        return new EmployeeToResponse(entity.Id, entity.Name, entity.SecondName, entity.ThirdName, entity.Email);
+        return new EmployeeToResponse(
+            entity.Id, 
+            entity.Name,
+            entity.SecondName, 
+            entity.ThirdName, 
+            entity.Email);
     }
 
     public async Task<IEnumerable<EmployeeToResponse>> GetAll()
     {
         var entities = await _repository.GetAllAsync();
-        return entities.Select(e => new EmployeeToResponse(e.Id, e.Name, e.SecondName, e.ThirdName, e.Email));
+        return entities.Select(e 
+            => new EmployeeToResponse(e.Id, e.Name, e.SecondName, e.ThirdName, e.Email));
     }
 
     public async Task<Message> CreateEmployee(EmployeeToCreate dto)
     {
-        var entity = new EmployeeEntity(dto.FirstName, dto.LastName, dto.Patronymic, dto.Email);
+        var entity = new EmployeeEntity(
+            dto.FirstName, 
+            dto.SecondName, 
+            dto.ThirdName,
+            dto.Email);
         await _repository.PersistAsync(entity);
         return new Message("Employee created successfully", DateTime.UtcNow);
     }
 
-    public async Task<Message> UpdateEmployee(Guid id, EmployeeToUpdate dto)
+    public async Task<Message> UpdateEmployee(Guid id, EmployeeToCreate dto)
     {
         var entity = await _repository.FindAsync(id);
         if (entity is null)
             throw new NotFoundException($"There is no Employee with id {id}");
 
         entity.Name = dto.FirstName;
-        entity.SecondName = dto.LastName;
-        entity.ThirdName = dto.Patronymic;
+        entity.SecondName = dto.SecondName;
+        entity.ThirdName = dto.ThirdName;
         entity.Email = dto.Email;
 
         await _repository.UpdateAsync(entity);

@@ -18,6 +18,9 @@ Log.Logger = new LoggerConfiguration()
 
 builder.Host.UseSerilog();
 
+builder.Services.AddEndpointsApiExplorer(); 
+builder.Services.AddSwaggerGen(); 
+
 var connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING");
 
 builder.Services.AddDataBase(connectionString);
@@ -31,6 +34,12 @@ builder.Services.AddServices();
 var app = builder.Build();
 
 app.UseSerilogRequestLogging();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger(); 
+    app.UseSwaggerUI(); 
+}
 
 app.UseMiddleware<ExceptionHandler>();
 app.MapControllers();

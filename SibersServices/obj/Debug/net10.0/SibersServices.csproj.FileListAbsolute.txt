@@ -13,3 +13,4 @@
 /Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/refint/SibersServices.dll
 /Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/SibersServices.pdb
 /Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/ref/SibersServices.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/SibersServices.sourcelink.json

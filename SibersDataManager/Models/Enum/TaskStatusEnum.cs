@@ -1,6 +1,6 @@
 namespace SibersDataManager.Models.Roles;
 
-public enum TaskStatus
+public enum TaskStatusEnum
 {
     ToDo,
     InProgress,

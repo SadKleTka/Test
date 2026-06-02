@@ -12,3 +12,4 @@
 /Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.pdb
 /Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.genruntimeconfig.cache
 /Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/ref/SibersDataManager.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.sourcelink.json

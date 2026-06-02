@@ -1,5 +1,6 @@
 using SibersDataManager.Models.Employees;
 using SibersDataManager.Models.Projects;
+using SibersDataManager.Models.Roles;
 
 namespace SibersDataManager.Models.Tasks;
 
@@ -8,7 +9,7 @@ public class ProjectTaskEntity
     
     public ProjectTaskEntity() {} 
 
-    public ProjectTaskEntity(string name, Guid authorId, Guid? executorId, TaskStatus status, string comment, uint priority, Guid projectId)
+    public ProjectTaskEntity(string name, Guid authorId, Guid? executorId, TaskStatusEnum status, string comment, uint priority, Guid projectId)
     {
         Id = Guid.NewGuid();
         Name = name;
@@ -24,7 +25,7 @@ public class ProjectTaskEntity
     public string Name { get; set; }
     public string Comment { get; set; }
     public uint Priority { get; set; }
-    public TaskStatus Status { get; set; }
+    public TaskStatusEnum Status { get; set; }
     
     public Guid ProjectId { get; set; }
     public ProjectEntity Project { get; set; }

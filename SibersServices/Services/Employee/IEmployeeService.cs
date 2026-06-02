@@ -11,7 +11,7 @@ public interface IEmployeeService
 
     public Task<Message> CreateEmployee(EmployeeToCreate dto);
 
-    public Task<Message> UpdateEmployee(Guid id, EmployeeToUpdate dto);
+    public Task<Message> UpdateEmployee(Guid id, EmployeeToCreate dto);
 
     public Task<Message> DeleteEmployeeById(Guid id);
 

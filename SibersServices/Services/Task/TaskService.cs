@@ -21,19 +21,36 @@ public class TaskService : ITaskService
         if (entity is null)
             throw new NotFoundException($"There is no Task with id {id}");
 
-        return new ProjectTaskToResponse(entity.Id, entity.Name, entity.AuthorId, entity.WorkerId, entity.Status, entity.Comment, entity.Priority, entity.ProjectId);
+        return new ProjectTaskToResponse(
+            entity.Id, 
+            entity.Name,
+            entity.AuthorId,
+            entity.WorkerId,
+            entity.Status,
+            entity.Comment,
+            entity.Priority,
+            entity.ProjectId);
     }
 
     public async Task<IEnumerable<ProjectTaskToResponse>> GetAll()
     {
         var entities = await _repository.GetAllAsync();
 
-        return entities.Select(e => new ProjectTaskToResponse(e.Id, e.Name, e.AuthorId, e.WorkerId, e.Status, e.Comment, e.Priority, e.ProjectId));
+        return entities.Select(e 
+            => new ProjectTaskToResponse(
+                e.Id, e.Name, e.AuthorId, e.WorkerId, e.Status, e.Comment, e.Priority, e.ProjectId));
     }
 
     public async Task<Message> CreateTask(ProjectTaskToCreate dto)
     {
-        var entity = new ProjectTaskEntity(dto.Name, dto.AuthorId, dto.ExecutorId, dto.Status, dto.Comment, dto.Priority, dto.ProjectId);
+        var entity = new ProjectTaskEntity(
+            dto.Name,
+            dto.AuthorId,
+            dto.ExecutorId, 
+            dto.Status,
+            dto.Comment, 
+            dto.Priority,
+            dto.ProjectId);
         await _repository.PersistAsync(entity);
         return new Message("Task created successfully", DateTime.UtcNow);
     }
