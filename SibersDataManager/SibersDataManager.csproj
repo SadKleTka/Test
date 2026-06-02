@@ -17,11 +17,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Models\Employees\Dto\" />
-      <Folder Include="Models\ProjectTasks\Dto\" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>

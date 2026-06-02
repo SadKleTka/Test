@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SibersTestWork.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f99f588e302ebbe58217213daa430c2482d724b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SibersTestWork.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SibersTestWork.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

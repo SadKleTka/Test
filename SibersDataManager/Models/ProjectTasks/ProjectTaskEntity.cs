@@ -6,8 +6,19 @@ namespace SibersDataManager.Models.Tasks;
 public class ProjectTaskEntity
 {
     
-    public ProjectTaskEntity() {}
-    
+    public ProjectTaskEntity() {} 
+
+    public ProjectTaskEntity(string name, Guid authorId, Guid? executorId, TaskStatus status, string comment, uint priority, Guid projectId)
+    {
+        Id = Guid.NewGuid();
+        Name = name;
+        AuthorId = authorId;
+        WorkerId = executorId;
+        Status = status;
+        Comment = comment;
+        Priority = priority;
+        ProjectId = projectId;
+    }    
     public Guid Id { get; set; }
     
     public string Name { get; set; }

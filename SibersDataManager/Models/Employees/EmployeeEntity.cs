@@ -7,8 +7,16 @@ namespace SibersDataManager.Models.Employees;
 public class EmployeeEntity
 {
     
-    public EmployeeEntity() {}
-    
+    public EmployeeEntity() {} 
+
+    public EmployeeEntity(string firstName, string lastName, string patronymic, string email)
+    {
+        Id = Guid.NewGuid();
+        Name = firstName;
+        SecondName = lastName;
+        ThirdName = patronymic;
+        Email = email;
+    }    
     public Guid Id { get; set; }
     
     public string Name { get; set; }
