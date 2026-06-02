@@ -17,22 +17,49 @@
             </div>
         </nav>
         <main class="main-content">
+            <!-- Projects Section -->
             <section id="projects-section" class="section">
                 <h1>Projects</h1>
                 <button class="btn btn-primary" onclick="openCreateProjectWizard()">Create Project</button>
+                <div class="filter-section">
+                    <input type="number" id="project-priority-filter" placeholder="Filter by priority (1-10)" min="1" max="10" onchange="filterProjects()">
+                    <select id="project-sort-filter" onchange="filterProjects()">
+                        <option value="">-- Sort By --</option>
+                        <option value="name">Name</option>
+                        <option value="priority">Priority</option>
+                        <option value="startDate">Start Date</option>
+                    </select>
+                </div>
                 <div id="projects-list" class="list-container"></div>
             </section>
+            <!-- Employees Section -->
             <section id="employees-section" class="section" style="display:none;">
                 <h1>Employees</h1>
                 <button class="btn btn-primary" onclick="openCreateEmployeeModal()">Add Employee</button>
                 <div id="employees-list" class="list-container"></div>
             </section>
+            <!-- Tasks Section -->
             <section id="tasks-section" class="section" style="display:none;">
                 <h1>Tasks</h1>
+                <div class="filter-section">
+                    <select id="task-status-filter" onchange="filterTasks()">
+                        <option value="">All Statuses</option>
+                        <option value="0">To Do</option>
+                        <option value="1">In Progress</option>
+                        <option value="2">Done</option>
+                    </select>
+                    <select id="task-sort-filter" onchange="filterTasks()">
+                        <option value="">-- Sort By --</option>
+                        <option value="name">Name</option>
+                        <option value="priority">Priority</option>
+                        <option value="status">Status</option>
+                    </select>
+                </div>
                 <div id="tasks-list" class="list-container"></div>
             </section>
         </main>
     </div>
+    <!-- Project Wizard Modal -->
     <div id="project-wizard" class="modal" style="display:none;">
         <div class="modal-content">
             <div class="modal-header">
@@ -40,7 +67,7 @@
                 <button class="close-btn" onclick="closeProjectWizard()">&times;</button>
             </div>
             <div class="modal-body">
-                <div id="step-1"><h3>Project Information</h3><div class="form-group"><label>Project Name *</label><input type="text" id="project-name" class="form-control"></div><div class="form-row"><div class="form-group"><label>Start Date *</label><input type="date" id="project-start-date" class="form-control"></div><div class="form-group"><label>End Date</label><input type="date" id="project-end-date" class="form-control"></div></div><div class="form-group"><label>Priority *</label><input type="number" id="project-priority" class="form-control" min="1" max="10"></div></div>
+                <div id="step-1"><h3>Project Information</h3><div class="form-group"><label>Project Name *</label><input type="text" id="project-name" class="form-control"></div><div class="form-row"><div class="form-group"><label>Start Date *</label><input type="date" id="project-start-date" class="form-control"></div><div class="form-group"><label>End Date</label><input type="date" id="project-end-date" class="form-control"></div></div><div class="form-group"><label>Priority (1-10) *</label><input type="number" id="project-priority" class="form-control" min="1" max="10"></div></div>
                 <div id="step-2" style="display:none;"><h3>Companies</h3><div class="form-group"><label>Customer Company *</label><input type="text" id="project-customer-company" class="form-control"></div><div class="form-group"><label>Worker Company *</label><input type="text" id="project-worker-company" class="form-control"></div></div>
                 <div id="step-3" style="display:none;"><h3>Project Manager</h3><div class="form-group"><label>Select Manager *</label><input type="text" id="project-manager-search" class="form-control" placeholder="Search..." onkeyup="searchEmployees('manager')"><ul id="manager-suggestions" class="suggestions-list"></ul><input type="hidden" id="project-manager-id"><div id="manager-selected"></div></div></div>
                 <div id="step-4" style="display:none;"><h3>Project Workers</h3><div class="form-group"><label>Select Workers *</label><input type="text" id="project-workers-search" class="form-control" placeholder="Search..." onkeyup="searchEmployees('worker')"><ul id="workers-suggestions" class="suggestions-list"></ul><div id="selected-workers" class="selected-items"></div></div></div>
@@ -52,6 +79,7 @@
             </div>
         </div>
     </div>
+    <!-- Create Employee Modal -->
     <div id="employee-modal" class="modal" style="display:none;">
         <div class="modal-content">
             <div class="modal-header"><h2>Add Employee</h2><button class="close-btn" onclick="closeEmployeeModal()">&times;</button></div>
