@@ -35,11 +35,15 @@ public class ProjectTaskRepository : IProjectTaskRepository
         return await query.ToListAsync();
     }
 
-    public async Task<ProjectTaskEntity?> FindAsync(Guid id) =>
-        await _context.Tasks.FirstOrDefaultAsync(x => x.Id == id);
+    public async Task<ProjectTaskEntity?> FindAsync(Guid id)
+    {
+        return await _context.Tasks.FirstOrDefaultAsync(x => x.Id == id);
+    }
 
-    public async Task<IEnumerable<ProjectTaskEntity>> GetAllAsync() =>
-        await _context.Tasks.ToListAsync();
+    public async Task<IEnumerable<ProjectTaskEntity>> GetAllAsync()
+    {
+        return await _context.Tasks.ToListAsync();
+    }
 
     public async Task PersistAsync(ProjectTaskEntity entity)
     {

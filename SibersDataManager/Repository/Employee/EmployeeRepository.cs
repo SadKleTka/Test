@@ -13,9 +13,9 @@ public class EmployeeRepository : IEmployeeRepository
         _context = context;
     }
 
-    public async Task<EmployeeEntity> GetByEmailAsync(string email)
+    public async Task<EmployeeEntity?> GetByEmailAsync(string email)
     {
-        return await _context.Employees.FirstAsync(e => e.Email == email);
+        return await _context.Employees.FirstOrDefaultAsync(e => e.Email == email);
     }
 
     public async Task<EmployeeEntity?> FindAsync(Guid id) => 
@@ -23,7 +23,7 @@ public class EmployeeRepository : IEmployeeRepository
             p => p.ManagedProjects).
             Include(t => t.AuthoredTasks).
             Include(t => t.WorkedTasks).
-            FirstAsync(x => x.Id == id);
+            FirstOrDefaultAsync(x => x.Id == id);
 
     public async Task<IEnumerable<EmployeeEntity>> GetAllAsync() => 
         await _context.Employees.ToListAsync();

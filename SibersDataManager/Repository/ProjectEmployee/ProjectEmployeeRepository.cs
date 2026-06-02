@@ -31,13 +31,13 @@ public class ProjectEmployeeRepository : IProjectEmployeeRepository
         );
     }
 
-    public async Task<ProjectEntity> GetAllOfProject(Guid projectId)
+    public async Task<ProjectEntity?> GetAllOfProject(Guid projectId)
     {
-        return await _db.Projects.AsNoTracking().Include(e => e.Employees).FirstAsync(p => p.Id == projectId);
+        return await _db.Projects.AsNoTracking().Include(e => e.Employees).FirstOrDefaultAsync(p => p.Id == projectId);
     }
 
-    public async Task<EmployeeEntity> GetEmployeeAsync(Guid employeeId)
+    public async Task<EmployeeEntity?> GetEmployeeAsync(Guid employeeId)
     {
-        return await _db.Employees.AsNoTracking().Include(e => e.Projects).FirstAsync(e => e.Id == employeeId);
+        return await _db.Employees.AsNoTracking().Include(e => e.Projects).FirstOrDefaultAsync(e => e.Id == employeeId);
     }
 }
