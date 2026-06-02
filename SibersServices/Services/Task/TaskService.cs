@@ -1,5 +1,6 @@
 using SibersDataManager.Models;
 using SibersDataManager.Models.Exceptions;
+using SibersDataManager.Models.Roles;
 using SibersDataManager.Models.Tasks;
 using SibersDataManager.Models.Tasks.Dto;
 using SibersDataManager.Repository.ProjectTask;
@@ -13,6 +14,27 @@ public class TaskService : ITaskService
     public TaskService(IProjectTaskRepository repository)
     {
         _repository = repository;
+    }
+    
+    public async Task<IEnumerable<ProjectTaskToResponse>> GetFiltered(
+        TaskStatusEnum? status,
+        string? sortBy)
+    {
+        var entities =
+            await _repository.GetFilteredAsync(
+                status,
+                sortBy);
+
+        return entities.Select(e =>
+            new ProjectTaskToResponse(
+                e.Id,
+                e.Name,
+                e.AuthorId,
+                e.WorkerId,
+                e.Status,
+                e.Comment,
+                e.Priority,
+                e.ProjectId));
     }
 
     public async Task<ProjectTaskToResponse> GetById(Guid id)

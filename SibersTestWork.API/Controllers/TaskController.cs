@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using SibersDataManager.Models.Roles;
 using SibersDataManager.Models.Tasks.Dto;
 using SibersServices.Services.Task;
 
@@ -26,11 +27,16 @@ public class TaskController : ControllerBase
     }
 
     [HttpGet("all")]
-    public async Task<IActionResult> GetAll()
+    public async Task<IActionResult> GetAll(
+        [FromQuery] TaskStatusEnum? status,
+        [FromQuery] string? sortBy)
     {
-        _logger.LogInformation("Task GetById method called.");
+        _logger.LogInformation("Task GetAll method called.");
 
-        return Ok(await _service.GetAll());
+        return Ok(
+            await _service.GetFiltered(
+                status,
+                sortBy));
     }
 
     [HttpPost]

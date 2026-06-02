@@ -5,6 +5,8 @@ namespace SibersServices.Services;
 
 public interface IProjectService
 {
+    
+    Task<IEnumerable<ProjectToResponse>> GetFiltered(uint? priority, string? sortBy);
     public Task<ProjectToResponse> GetById(Guid id);
     public Task<IEnumerable<ProjectToResponse>> GetAll();
     

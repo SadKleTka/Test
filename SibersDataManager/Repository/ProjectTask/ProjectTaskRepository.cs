@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SibersDataManager.Data;
+using SibersDataManager.Models.Roles;
 using SibersDataManager.Models.Tasks;
 
 namespace SibersDataManager.Repository.ProjectTask;
@@ -11,6 +12,27 @@ public class ProjectTaskRepository : IProjectTaskRepository
     public ProjectTaskRepository(AppDbContext context)
     {
         _context = context;
+    }
+    
+    public async Task<IEnumerable<ProjectTaskEntity>> GetFilteredAsync(
+        TaskStatusEnum? status,
+        string? sortBy)
+    {
+        var query = _context.Tasks.AsQueryable();
+
+        if (status.HasValue)
+        {
+            query = query.Where(x => x.Status == status.Value);
+        }
+
+        query = sortBy?.ToLower() switch
+        {
+            "priority" => query.OrderBy(x => x.Priority),
+            "name" => query.OrderBy(x => x.Name),
+            _ => query
+        };
+
+        return await query.ToListAsync();
     }
 
     public async Task<ProjectTaskEntity?> FindAsync(Guid id) =>

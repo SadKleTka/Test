@@ -12,6 +12,28 @@ public class ProjectRepository : IProjectRepository
     {
         _context = context;
     }
+    
+    public async Task<IEnumerable<ProjectEntity>> GetFilteredAsync(
+        uint? priority,
+        string? sortBy)
+    {
+        var query = _context.Projects.AsQueryable();
+
+        if (priority.HasValue)
+        {
+            query = query.Where(x => x.Priority == priority.Value);
+        }
+
+        query = sortBy?.ToLower() switch
+        {
+            "priority" => query.OrderBy(x => x.Priority),
+            "startdate" => query.OrderBy(x => x.StartDate),
+            "name" => query.OrderBy(x => x.Name),
+            _ => query
+        };
+
+        return await query.ToListAsync();
+    }
 
     public async Task PersistAsync(ProjectEntity entity)
     {

@@ -15,6 +15,18 @@ public class ProjectService : IProjectService
         _repository = repository;
     }
     
+    public async Task<IEnumerable<ProjectToResponse>> GetFiltered(
+        uint? priority,
+        string? sortBy)
+    {
+        var projects =
+            await _repository.GetFilteredAsync(
+                priority,
+                sortBy);
+
+        return AllMapper(projects);
+    }
+    
     public async Task<ProjectToResponse> GetById(Guid id)
     {
         var project = await _repository.FindAsync(id);

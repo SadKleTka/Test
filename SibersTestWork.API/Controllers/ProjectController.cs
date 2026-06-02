@@ -27,11 +27,16 @@ public class ProjectController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ProjectToResponse>>> GetAll()
+    public async Task<ActionResult<IEnumerable<ProjectToResponse>>> GetAll(
+        [FromQuery] uint? priority,
+        [FromQuery] string? sortBy)
     {
-        _logger.LogInformation("Project GetAll Projects method called.");
+        _logger.LogInformation("Project GetAll method called.");
 
-        return Ok(await _service.GetAll());
+        return Ok(
+            await _service.GetFiltered(
+                priority,
+                sortBy));
     }
 
     [HttpPost]

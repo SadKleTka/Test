@@ -4,6 +4,7 @@ namespace SibersDataManager.Repository.ProjectRepository;
 
 public interface IProjectRepository
 {
+    Task<IEnumerable<ProjectEntity>> GetFilteredAsync(uint? priority, string? sortBy);
     public Task PersistAsync(ProjectEntity entity);
 
     public Task<IEnumerable<ProjectEntity>> GetAllAsync();
