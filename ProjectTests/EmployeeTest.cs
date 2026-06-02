@@ -60,10 +60,9 @@ public class EmployeeTest
     public async Task UpdateEmployee_EntityIsNull_ThrowsNotFoundException()
     {
         var employeeId = Guid.NewGuid();
+        
         var updateDto = new EmployeeToCreate("Name", "LastName", "Patronymic", "email@sibers.com");
-
-        _repositoryMock.Setup(u => u.FindAsync(employeeId)).ReturnsAsync((EmployeeEntity)null);
-
+        
         await Assert.ThrowsAsync<NotFoundException>(() => _service.UpdateEmployee(employeeId, updateDto));
     }
 }
