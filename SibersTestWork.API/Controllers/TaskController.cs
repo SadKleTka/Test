@@ -9,44 +9,51 @@ namespace SibersTestWork.API.Controllers;
 public class TaskController : ControllerBase
 {
     private readonly ITaskService _service;
+    private readonly ILogger<TaskController> _logger;
 
-    public TaskController(ITaskService service)
+    public TaskController(ITaskService service, ILogger<TaskController> logger)
     {
         _service = service;
+        _logger = logger;
     }
 
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> GetById(Guid id)
     {
-        var result = await _service.GetById(id);
-        return Ok(result);
+        _logger.LogInformation("Task GetById method called.");
+
+        return Ok(await _service.GetById(id));
     }
 
     [HttpGet("all")]
     public async Task<IActionResult> GetAll()
     {
-        var result = await _service.GetAll();
-        return Ok(result);
+        _logger.LogInformation("Task GetById method called.");
+
+        return Ok(await _service.GetAll());
     }
 
     [HttpPost]
     public async Task<IActionResult> Create([FromBody] ProjectTaskToCreate dto)
     {
-        var result = await _service.CreateTask(dto);
-        return Ok(result);
+        _logger.LogInformation("Task GetById method called.");
+
+        return Ok(await _service.CreateTask(dto));
     }
 
     [HttpPut("{id:guid}")]
     public async Task<IActionResult> Update(Guid id, [FromBody] ProjectTaskToUpdate dto)
     {
-        var result = await _service.UpdateTask(id, dto);
-        return Ok(result);
+        _logger.LogInformation("Task GetById method called.");
+
+        return Ok(await _service.UpdateTask(id, dto));
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete(Guid id)
     {
-        var result = await _service.DeleteTaskById(id);
-        return Ok(result);
+        _logger.LogInformation("Task GetById method called.");
+
+        return Ok(await _service.DeleteTaskById(id));
     }
 }

@@ -21,7 +21,7 @@ public class ProjectController : ControllerBase
     [HttpGet("{id}")]
     public async Task<ActionResult<ProjectToResponse>> GetById([FromRoute] Guid id)
     {
-        _logger.LogInformation("GetById method called.");
+        _logger.LogInformation("Project GetById method called.");
 
         return Ok(await _service.GetById(id));
     }
@@ -29,7 +29,7 @@ public class ProjectController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ProjectToResponse>>> GetAll()
     {
-        _logger.LogInformation("GetAll Projects method called.");
+        _logger.LogInformation("Project GetAll Projects method called.");
 
         return Ok(await _service.GetAll());
     }
@@ -41,7 +41,7 @@ public class ProjectController : ControllerBase
         ProjectToCreate project
     )
     {
-        _logger.LogInformation("CreateProject method called.");
+        _logger.LogInformation("Project CreateProject method called.");
 
         return Ok(await _service.CreateProject(project));
     }
@@ -55,7 +55,7 @@ public class ProjectController : ControllerBase
         ProjectToUpdate project
     )
     {
-        _logger.LogInformation("UpdateProject Method called.");
+        _logger.LogInformation("Project UpdateProject Method called.");
         
         return Ok(await _service.UpdateProject(id, project));
     }
@@ -67,7 +67,7 @@ public class ProjectController : ControllerBase
         Guid id
     )
     {
-        _logger.LogInformation("DeleteProject Method called.");
+        _logger.LogInformation("Project DeleteProject Method called.");
 
         return Ok(await _service.DeleteProjectById(id));
     }
