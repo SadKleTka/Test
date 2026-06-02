@@ -1,0 +1,21 @@
+﻿services:
+  db:
+    image: postgres:latest
+    container_name: SibersDataBase
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: sibers.db
+    ports:
+      - "5440:5432"
+  
+  seq:
+    image: datalust/seq:latest
+    container_name: sibers_seq
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_NOAUTHENTICATION=true
+    ports:
+      - "5343:80"
+    restart: unless-stopped     
+  

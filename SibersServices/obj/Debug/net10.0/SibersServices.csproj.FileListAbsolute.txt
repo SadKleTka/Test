@@ -1,0 +1,15 @@
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/SibersServices.csproj.AssemblyReference.cache
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/SibersServices.GeneratedMSBuildEditorConfig.editorconfig
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/SibersServices.AssemblyInfoInputs.cache
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/SibersServices.AssemblyInfo.cs
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/SibersServices.csproj.CoreCompileInputs.cache
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/bin/Debug/net10.0/SibersServices.deps.json
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/bin/Debug/net10.0/SibersServices.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/bin/Debug/net10.0/SibersServices.pdb
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/bin/Debug/net10.0/SibersDataManager.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/bin/Debug/net10.0/SibersDataManager.pdb
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/SibersSe.0942E229.Up2Date
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/SibersServices.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/refint/SibersServices.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/SibersServices.pdb
+/Users/amank/RiderProjects/SibersTestWork/SibersServices/obj/Debug/net10.0/ref/SibersServices.dll

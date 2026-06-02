@@ -1,0 +1,14 @@
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/bin/Debug/net10.0/SibersDataManager.deps.json
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/bin/Debug/net10.0/SibersDataManager.runtimeconfig.json
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/bin/Debug/net10.0/SibersDataManager.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/bin/Debug/net10.0/SibersDataManager.pdb
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.csproj.AssemblyReference.cache
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.GeneratedMSBuildEditorConfig.editorconfig
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.AssemblyInfoInputs.cache
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.AssemblyInfo.cs
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.csproj.CoreCompileInputs.cache
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/refint/SibersDataManager.dll
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.pdb
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/SibersDataManager.genruntimeconfig.cache
+/Users/amank/RiderProjects/SibersTestWork/SibersDataManager/obj/Debug/net10.0/ref/SibersDataManager.dll
